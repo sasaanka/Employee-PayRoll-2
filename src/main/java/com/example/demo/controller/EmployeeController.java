@@ -1,12 +1,15 @@
 package com.example.demo.controller;
+
+import com.example.demo.dto.EmployeeDTO;
+import com.example.demo.model.Employee;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello from Employee Payroll App";
+    @PostMapping("/create")
+    public Employee createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        return new Employee(1, employeeDTO.getName(), employeeDTO.getSalary());
     }
 }
